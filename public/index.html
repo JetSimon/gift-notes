@@ -8,26 +8,26 @@
   </head>
   <body class="bg-pink-200 text-white">
     <a href="./" class="m-3 my-8 text-blue-400 hover:text-blue-500">back home</a>
-    <div class="h-1/2 m-auto text-center flex items-center justify-center">
+    <div class="w-2/3 md:w-auto mt-36 m-auto text-center flex items-center justify-center">
         
-        <div class="w-1/3 p-3 text-gray-500 bg-white rounded-lg shadow-sm" id="note">
+        <div class="border-dashed border-2 border-blue-300 p-3 text-gray-500 bg-white rounded-lg shadow-sm" id="note">
         <p class="text-2xl font-semibold text-gray-300" id="from"></p>
         <p class="text-lg my-3" id="noteContent">Create a note in the form or enter your note URL in the address bar c: </p>
         <p class="text-xs text-gray-300" id="createdAt"></p>
         </div>
     </div>
-    <div class="h-1/2 m-auto text-center flex items-center justify-center">
+    <div class=" mt-16 m-auto text-center flex items-center justify-center">
 
         <div class="text-gray-500 block" id="createForm">
         <form action="/create_note" method="POST">
             <label for="author">Your name:</label><br />
-            <input class="text-gray-500 rounded-lg shadow-sm" type="text" id="author" name="author" required /><br />
+            <input class="my-3 text-gray-500 rounded-lg shadow-sm" type="text" id="author" name="author" required /><br />
             <label for="content">Content:</label><br />
-            <textarea class="text-gray-500 rounded-lg shadow-sm" type="text" id="content" name="content" required></textarea
+            <textarea class="my-3 w-full h-36 text-gray-500 rounded-lg shadow-sm" type="text" id="content" name="content" required></textarea
             ><br />
             <label for="openAt">Lock this note until:</label><br />
             <input class="rounded-lg shadow-sm" type="datetime-local" id="openAt" name="openAt" /><br />
-            <input class="my-3 bg-blue-200 font-bold rounded-lg shadow-sm p-3 hover:bg-blue-300" type="submit" value="Submit" />
+            <input class="w-2/3 my-5 bg-blue-200 text-2xl text-white font-bold rounded-lg shadow-sm p-3 hover:bg-blue-300" type="submit" value="Submit" />
         </form>
         </div>
     </div>
