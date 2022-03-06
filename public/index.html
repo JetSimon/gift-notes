@@ -63,7 +63,7 @@
               ? content
               : "This note is locked until " +
                 new Date(openAt).toLocaleString();
-            fromText.innerHTML = "It's a note from " + author + "!";
+            fromText.innerHTML = 'It\'s a note from <span class="text-blue-300">' + author + '</span>!';
             createdAtText.innerHTML =
               "this note was left on " + new Date(createdAt).toLocaleString();
           });
