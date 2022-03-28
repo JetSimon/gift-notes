@@ -27,7 +27,7 @@
               console.log(notes)
               for(let i = 0; i < notes.length; i++)
               {
-                let note = notes[i];
+                let note = notes[notes.length - i - 1];
                 var li = document. createElement("li");
                 li.classList.add("hover:text-blue-500");
                 li.classList.add("my-3");
