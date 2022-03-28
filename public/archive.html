@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gift notes - archive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-pink-200 text-white">
+    <a href="./" class="m-3 my-8 text-blue-400 hover:text-blue-500">back home</a>
+    <div class="w-2/3 md:w-auto mt-36 m-auto text-center flex items-center justify-center">
+      
+      <ul id="archive">
+
+      </ul>
+      
+    </div>
+
+    <script>
+
+        const archive = document.getElementById("archive");
+
+        fetch("/get_archive")
+          .then((response) => response.json())
+          .then((data) => {
+              const notes = data.archive;
+              console.log(notes)
+              for(let i = 0; i < notes.length; i++)
+              {
+                let note = notes[i];
+                var li = document. createElement("li");
+                li.classList.add("hover:text-blue-500");
+                li.classList.add("my-3");
+                var a = document.createElement('a');
+                a.appendChild(document.createTextNode("note left by " + note.author + " on " + new Date(note.created).toLocaleString()))
+                a.href = './?note=' + note._id;
+                li.appendChild(a);
+                archive.appendChild(li);
+                
+              }
+          });
+    </script>
+  </body>
+</html>

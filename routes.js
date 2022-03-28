@@ -8,6 +8,32 @@ function routes(app, db)
 {
     app.get('/', (req, res) => { res.sendFile('index.html') });
 
+    app.get('/archive', (req, res) => { res.sendFile(__dirname + '/public/archive.html') });
+
+    app.get('/get_archive', (req, res) => { 
+
+        params = {}
+        Note.find(params).exec(function(err, posts) {
+        if(err) {
+            res.json({"archive":[], "error":err});
+            return;
+        }
+        res.json({"archive":posts});
+        });
+    });
+
+    app.get('/delete/:id', (req, res) => { 
+        const id = req.params.id;
+        Note.deleteOne({_id:id}).exec(function(err, note) {
+            if(err) {
+                res.json({"note":null, "error":err});
+                return;
+            }
+            res.redirect('../');
+        });    
+    });
+
+
     app.get('/get_note/:id', (req, res) => { 
         const id = req.params.id;
         Note.findOne({_id:id}).exec(function(err, note) {

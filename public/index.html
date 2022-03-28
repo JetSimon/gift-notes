@@ -8,6 +8,7 @@
   </head>
   <body class="bg-pink-200 text-white">
     <a href="./" class="m-3 my-8 text-blue-400 hover:text-blue-500">back home</a>
+    <a href="./archive" class="m-3 my-8 text-blue-400 hover:text-blue-500">view archive</a>
     <div class="w-2/3 md:w-auto mt-36 m-auto text-center flex items-center justify-center">
         
         <div class="border-dashed border-2 border-blue-300 p-3 text-gray-500 bg-white rounded-lg shadow-sm" id="note">
@@ -15,7 +16,13 @@
         <p class="text-lg my-3" id="noteContent">Create a note in the form or enter your note URL in the address bar c: </p>
         <p class="text-xs text-gray-300" id="createdAt"></p>
         </div>
+
     </div>
+    
+    <div class="mt-3 md:w-auto m-auto text-center flex items-center justify-center">
+      <a href="" id="deleteButton">delete this note forever</a>
+    </div>
+
     <div class=" mt-16 m-auto text-center flex items-center justify-center">
 
         <div class="text-gray-500 block" id="createForm">
@@ -44,8 +51,11 @@
       const fromText = document.getElementById("from");
       const createdAtText = document.getElementById("createdAt");
 
-      note.style.display = id != null ? "initial" : "hidden";
-      createForm.style.display = id != null ? "hidden" : "initial";
+      const deleteButton = document.getElementById("deleteButton");
+
+      deleteButton.style.display = id == null ? "none" : "initial";
+      note.style.display = id == null ? "none" : "initial";
+      createForm.style.display = id != null ? "none" : "initial";
 
       if (id) {
         fetch("/get_note/" + id)
@@ -66,6 +76,9 @@
             fromText.innerHTML = 'It\'s a note from <span class="text-blue-300">' + author + '</span>!';
             createdAtText.innerHTML =
               "this note was left on " + new Date(createdAt).toLocaleString();
+            
+            deleteButton.href = "./delete/" + id
+
           });
       } else {
       }
